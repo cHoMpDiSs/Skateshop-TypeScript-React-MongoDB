@@ -3,7 +3,7 @@ import React from "react";
 
 
 
-const About = () =>{
+const About: React.FC = () =>{
 
     return(
         <div className="container mx-auto  px-20 pb-32 text-center lg:mx-auto lg:px-60">

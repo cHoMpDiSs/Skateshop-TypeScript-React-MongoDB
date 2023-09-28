@@ -4,16 +4,24 @@ import Swipe from "react-easy-swipe";
 
 
 
-const images = ["https://susaf.s3.us-west-1.amazonaws.com/static/skateboards/black_deck.jpeg",
+
+
+interface CarouselProps {
+  images: string[];
+}
+
+interface CarouselState {
+  currentSlide: number;
+  paused: boolean;
+}
+
+const images: string[] = ["https://susaf.s3.us-west-1.amazonaws.com/static/skateboards/black_deck.jpeg",
 "https://susaf.s3.us-west-1.amazonaws.com/static/pants/baggy_black.jpg",
 "https://susaf.s3.us-west-1.amazonaws.com/static/shirts/green_shirt.JPG"
 ]
 
-
-
-
-class Carousel extends Component {
-  constructor(props) {
+class Carousel extends Component<{},CarouselState> {
+  constructor(props: {}) {
     super(props);
     this.state = {
       currentSlide: 0,
@@ -49,7 +57,7 @@ class Carousel extends Component {
     this.setState({ currentSlide: newSlide });
   };
 
-  setCurrentSlide = (index) => {
+  setCurrentSlide = (index: number) => {
     this.setState({ currentSlide: index });
   };
 

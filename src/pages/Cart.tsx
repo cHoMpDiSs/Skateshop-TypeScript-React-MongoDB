@@ -4,7 +4,39 @@ import Header from "../components/Header";
 import Cartcard from "../components/Cartcard";
 import Footer from "../components/Footer";
 
-const Cart = (props) =>{
+interface Item {
+    
+    _id: string;
+    product: string;
+    name: string;
+    img: string;
+    price: number;
+    sizes:{
+    [size: string]: {
+      size: string;
+      quantity: number;
+    }
+  }
+}
+
+interface CartItem {
+    item: Item;
+    size: string;
+    quantity: number;
+   
+  }
+
+interface Props  {
+    onAdd: (item:Item, size: string) => void;
+    onRemove: (item:Item, size:string) => void;
+    checkOut: () => void;
+    cartItems: CartItem[];
+  
+}
+
+
+
+const Cart: React.FC<Props> = (props) =>{
     const {cartItems, onAdd, onRemove, checkOut} = props;
     const navigate = useNavigate();
     const navigateToThankYou = () => {
@@ -15,6 +47,7 @@ const Cart = (props) =>{
     let total = 0
     let tax = 0;
     let finalTotal = 0
+
     const calculateTotal = () =>{
         for(let i = 0; i < cartItems.length; i++){
             total = cartItems[i].quantity * cartItems[i].item.price + total
@@ -22,7 +55,7 @@ const Cart = (props) =>{
             finalTotal = total + tax
         } 
     }
-   
+    calculateTotal()
     return(
     <div>
    <Header/>
@@ -30,7 +63,7 @@ const Cart = (props) =>{
         <div className="container my-12 mx-auto px-4 md:px-12 ">
                 <div className="flex justify-center flex-wrap -mx-1 lg:-mx- ">
 
-            {calculateTotal()}     
+                
             {cartItems.length === 0 && <div>Cart is empty</div>}
             {cartItems.map((item) => {
                 return(

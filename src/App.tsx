@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {Route, Routes} from "react-router-dom"
 import Main from './pages/Main';
 import Skateboards from './pages/Skateboards';
+import Cart from './pages/Cart';
 
 
 interface CartItem {
@@ -107,6 +108,7 @@ const App: React.FC = () => {
     <Routes>
       <Route path="/" element={<Main onAdd={onAdd} cartItems={cartItems}/>}/>
       <Route path="/skateboards" element={<Skateboards onAdd={onAdd} cartItems={cartItems}/>}/>
+      <Route path="/cart" element={<Cart onAdd={onAdd} checkOut={checkOut} onRemove={onRemove}cartItems={cartItems}/>}/>
     </Routes>
   );
 }

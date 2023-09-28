@@ -26,7 +26,7 @@ interface Item {
     quantity: number;
    
   }
-  
+
 
 interface Props {
   onAdd: (item: Item, size: string) => void;
@@ -42,7 +42,7 @@ const Main: React.FC<Props> = (props) => {
         <VideoPlayer />
       </div>
       <div className="flex justify-center mb-20">
-        <Carousel />
+        <Carousel/>
       </div>
       <About />
       <Footer />

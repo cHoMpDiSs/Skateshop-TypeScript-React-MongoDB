@@ -1,7 +1,36 @@
 import React from 'react';
 
+interface Item {
+  
+        _id: string;
+        product: string;
+        name: string;
+        img: string;
+        price: number;
+        sizes:{
+        [size: string]: {
+          size: string;
+          quantity: number;
+        }
+      }
+      
+    }
+ 
 
-const Cartcard = (props) => {
+
+interface Props {
+    img: string;
+    product: {
+      item: Item; // Nested item property
+      size: string; // You should also include size and quantity here if needed
+      quantity: number;
+    };
+    onAdd: (product: Item, size: string) => void;
+    onRemove: (product: Item, size: string) => void;
+  }
+  
+
+const Cartcard: React.FC<Props> = (props) => {
     const {product, onAdd, onRemove, img } = props;
     return(
         <div className="my-1 px-1 w-full lg:my-4 lg:px-4 lg:w-1/3 ">
