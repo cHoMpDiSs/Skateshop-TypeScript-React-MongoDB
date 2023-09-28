@@ -13,11 +13,6 @@ const Ordercard: React.FC = () => {
                 let letterOrNumber = Math.floor(Math.random() * 2 - 1 + 1) + 1
                 let randomIndexNum = Math.floor(Math.random() * numbers.length)
                 let randomIndexAlph = Math.floor(Math.random() * (alphabet.length))
-                console.log(letterOrNumber, "LETTER OR NUMBER")
-                console.log("RANDOM ALPHA NUM", alphabet[randomIndexAlph])
-                console.log("RANDOM NUM NUM ", numbers[randomIndexNum])
-                console.log(orderNumber, "ORDER NUMBER")
-                
                 if (letterOrNumber === 1){
                     orderString += alphabet[randomIndexAlph];
                 }else{

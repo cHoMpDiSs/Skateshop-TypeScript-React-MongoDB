@@ -17,7 +17,6 @@ interface Item {
     }
  
 
-
 interface Props {
     img: string;
     product: {

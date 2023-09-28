@@ -9,15 +9,19 @@ const VideoPlayer: React.FC = () => {
       setShowPreview(true);
       if (ref.current) {
         ref.current.showPreview();
-        ref.current.seekTo(0); // Optional: Rewind the video to the beginning
+        ref.current.seekTo(0); 
       }
     };
 
     return (
-      <div className='player-wrapper aspect-video mt-20'>
+      <div >
         {showPreview ? (
-          <img src='images/susaf.png' alt='Preview' width='100%' height='100%' />
+        <div className='player-wrapper aspect-video mt-20 text-center h-90 flex items-center justify-center'>
+          <img  src='images/susaf.png' alt='Preview' width='80%' height='80%' />
+          </div>
+         
         ) : (
+          <div className='player-wrapper aspect-video mt-20 text-center h-90 flex items-center justify-center'>
           <ReactPlayer
             className='react-player'
             playing={true}
@@ -25,12 +29,13 @@ const VideoPlayer: React.FC = () => {
             light='images/susaf.png'
             poster='images/susaf.png'
             url='https://susaf.s3.us-west-1.amazonaws.com/static/video/susaf.mp4'
-            width='100%'
-            height='100%'
-            controls={false} // Initially set controls to false
+            width='80%'
+            height='80%'
+            controls={false}
             ref={ref}
             onEnded={handleEnded}
           />
+          </div>
         )}
       </div>
     );

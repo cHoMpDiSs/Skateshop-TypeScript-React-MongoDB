@@ -30,7 +30,7 @@ interface Item {
 
 interface Props {
   onAdd: (item: Item, size: string) => void;
-  cartItems: CartItem[]; // Update to expect Item[]
+  cartItems: CartItem[];
 }
 
 
