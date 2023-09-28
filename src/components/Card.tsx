@@ -34,7 +34,6 @@ interface Props {
 
 
 
-
 const Card: React.FC<Props> = (props) => {
     const { cartItems, onAdd, item} = props;
     const [sizeSelector, setSelector] = useState<string>("small");
