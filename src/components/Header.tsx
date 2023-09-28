@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
-const Header = () =>{
+const Header: React.FC = () =>{
       
         const [navbarOpen, setNavbarOpen] = React.useState(false);
         return (

@@ -21,8 +21,8 @@ interface Item {
 interface Props {
     img: string;
     product: {
-      item: Item; // Nested item property
-      size: string; // You should also include size and quantity here if needed
+      item: Item; 
+      size: string; 
       quantity: number;
     };
     onAdd: (product: Item, size: string) => void;
@@ -37,7 +37,7 @@ const Cartcard: React.FC<Props> = (props) => {
         <div className="rounded-lg shadow-lg ">
             <img className="object-cover h-96 mx-auto" src={img} alt={product.item.name}></img>
             <div className="text-center pb-3 ">
-            <p className="mb- pt- text-center tracking-tight dark:text-black">{product.item.name}</p>
+            <p className="mb- pt- text-center tracking-tight dark:text-black">{product.item.name+" "+ product.size}</p>
             {product.quantity} x ${product.item.price}                        
                         {product.quantity < product.item.sizes[product.size].quantity ?  <div>
                     <button className="bg-transparent hover:bg-black-400 text-black-700 font-semibold
@@ -51,7 +51,7 @@ const Cartcard: React.FC<Props> = (props) => {
                      <button className="bg-transparent hover:bg-black-400 text-black-700 font-semibold
                              py-.75 px-2 ms-2 border border-black hover:border-transparent rounded"
                              onClick={()=>onRemove(product.item,product.size)}>-</button>
-                     <p>You have the maximum {product.item.name} available</p>
+                     <p>You have the maximum available</p>
                     </div>}
     </div>
     </div>

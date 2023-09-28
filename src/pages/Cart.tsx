@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Cartcard from "../components/Cartcard";
-import Footer from "../components/Footer";
+
 
 interface Item {
     
@@ -68,7 +68,7 @@ const Cart: React.FC<Props> = (props) =>{
             {cartItems.map((item) => {
                 return(
                 <Cartcard
-                key={item.item._id}
+                key={item.size + item.item._id }
                 product={item}
                 img={item.item.img}
                 onAdd={onAdd}
@@ -95,7 +95,7 @@ const Cart: React.FC<Props> = (props) =>{
                     </div>
                       }
             </div>
-         
+       
     </div>
 )};
 

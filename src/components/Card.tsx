@@ -32,8 +32,6 @@ interface Props {
 
 
 
-
-
 const Card: React.FC<Props> = (props) => {
     const { cartItems, onAdd, item} = props;
     const [sizeSelector, setSelector] = useState<string>("small");
@@ -62,6 +60,7 @@ const Card: React.FC<Props> = (props) => {
     
     const handleSelectorChange = (e:React.ChangeEvent<HTMLSelectElement>) => {
         setSelector(e.target.value);
+        
         };
     
     const handleAddToCart = (product: Item) => {

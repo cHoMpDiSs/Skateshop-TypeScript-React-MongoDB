@@ -1,11 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const Ordercard = () => {
+const Ordercard: React.FC = () => {
 
     const [orderNumber, setOrderNumber] = useState("")    
     useEffect(()=>{
-        const generateOrder = (orderNumber) => {
+        const generateOrder = () => {
             const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
             const numbers = ["0","1","2","3","4","5","6","7","8","9"]
             let orderString = "";

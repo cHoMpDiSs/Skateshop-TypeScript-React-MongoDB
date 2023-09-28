@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const Logo = () =>{
+const Logo: React.FC = () =>{
     return(
         <img 
         className="absolute bottom-20"

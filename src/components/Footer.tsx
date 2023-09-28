@@ -2,11 +2,11 @@ import React from "react";
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
-const Footer = () => {
+const Footer: React.FC = () => {
     return (
         <footer className="">
-            <div className="bg-black h-20 m-0 ">
-            <h2 className="text-white text-center">Created By Jordon Marchesano</h2>
+            <div className="bg-black h-24 m-0 ">
+            <h2 className="text-white pt-4 text-center">Created By Jordon Marchesano</h2>
             <div className="text-center">
                 <a className="pl-2 pr-2" href="https://github.com/cHoMpDiSs" target="_blank" rel="noreferrer">
                     <FontAwesomeIcon icon={faGithub} style={{color: "#fcfcfc",}} />

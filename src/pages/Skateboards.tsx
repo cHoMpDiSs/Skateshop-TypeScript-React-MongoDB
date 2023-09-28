@@ -25,7 +25,7 @@ interface CartItem {
 interface Props {
 
     onAdd: (item: Item, size: string) => void;
-    cartItems: CartItem[]; // Update to expect Item[]
+    cartItems: CartItem[]; 
 }
 
 const Skateboards: React.FC<Props> = (props) => {
@@ -52,7 +52,7 @@ const Skateboards: React.FC<Props> = (props) => {
               <Card
                 key={product._id}
                 cartItems={cartItems}
-                onAdd={() => onAdd(product,"small")}
+                onAdd={onAdd}
                 item={product}
               />
             );

@@ -4,6 +4,9 @@ import {Route, Routes} from "react-router-dom"
 import Main from './pages/Main';
 import Skateboards from './pages/Skateboards';
 import Cart from './pages/Cart';
+import Order from './pages/Order';
+import Pants from './pages/Pants';
+import Shirts from './pages/Shirts';
 
 
 interface CartItem {
@@ -14,7 +17,6 @@ interface CartItem {
 }
 
 interface Item {
-    
     _id: string;
     product: string;
     name: string;
@@ -30,7 +32,6 @@ interface Item {
 
 
 const App: React.FC = () => {
-  const [checkOutItems, setCheckOutItems] = useState<CartItem[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const onAdd = (item: Item, size: string) => {
@@ -49,7 +50,7 @@ const App: React.FC = () => {
       setCartItems(newArr);
       console.log(cartItems + ' adding more cart items.');
     } else {
-      setCartItems([...cartItems, { item:item, size, quantity: 1 }]);
+      setCartItems([...cartItems, { item, size, quantity: 1 }]);
       console.log(cartItems + ' empty cart or new item being added');
     }
   };
@@ -99,7 +100,7 @@ const App: React.FC = () => {
         })
         .then(function (data) {});
 
-      setCheckOutItems([]);
+    
       setCartItems([]);
     }
   };
@@ -108,16 +109,13 @@ const App: React.FC = () => {
     <Routes>
       <Route path="/" element={<Main onAdd={onAdd} cartItems={cartItems}/>}/>
       <Route path="/skateboards" element={<Skateboards onAdd={onAdd} cartItems={cartItems}/>}/>
+      <Route path="/pants" element={<Pants onAdd={onAdd} cartItems={cartItems}/>}/>
+      <Route path="/shirts" element={<Shirts onAdd={onAdd} cartItems={cartItems}/>}/>
       <Route path="/cart" element={<Cart onAdd={onAdd} checkOut={checkOut} onRemove={onRemove}cartItems={cartItems}/>}/>
+      <Route path="/order" element={<Order/>}/>
     </Routes>
   );
 }
-
-
-
-
-
-
 
 
 

@@ -3,9 +3,38 @@ import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Card from "../components/Card";
 
-const Pants = (props) =>{
-    const [pant, setPant] = useState([]);
+
+interface Item {
+    
+    _id: string;
+    product: string;
+    name: string;
+    img: string;
+    price: number;
+    sizes:{
+    [size: string]: {
+      size: string;
+      quantity: number;
+    }
+  }
+}
+interface CartItem {
+    item: Item;
+    size: string;
+    quantity: number;
+   
+  }
+interface Props {
+
+    onAdd: (item: Item, size: string) => void;
+    cartItems: CartItem[]; 
+}
+
+const Pants: React.FC<Props> = (props) =>{
+    const [pant, setPant] = useState<Item[]>([]);
     const {onAdd, cartItems} = props;
+
+
     useEffect(() =>{
     pants()
     },[])
@@ -25,20 +54,12 @@ const Pants = (props) =>{
                 {pant.map((product)=>{
              
                         return(
-      
                             <Card
                             key={product._id}
-                            name = {product.name}
-                            img = {product.img}
-                            price = {product.price}
-                            cartItems = {cartItems}
-                            onAdd ={onAdd}
-                            product={product}
-                           
-                        />
-  
-                        
-            
+                            cartItems={cartItems}
+                            onAdd={onAdd}
+                            item={product}
+                          />
                 )}
                 )}
             </div>

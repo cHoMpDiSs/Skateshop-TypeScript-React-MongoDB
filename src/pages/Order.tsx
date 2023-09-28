@@ -3,9 +3,7 @@ import Ordercard from "../components/Ordercard";
 import { NavLink } from "react-router-dom";
 
 
-
-
-const Order = () =>{
+const Order: React.FC = () =>{
    
 
 return(
