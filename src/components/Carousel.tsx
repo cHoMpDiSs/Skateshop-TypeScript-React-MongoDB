@@ -76,7 +76,7 @@ class Carousel extends Component<{}, CarouselState> {
                   className={
                     index === this.state.currentSlide
                       ? "block w-100% h-auto"
-                      : "hidden"
+                      : "hidden" 
                   }
                   onMouseEnter={() => {
                     this.setState({ paused: true });

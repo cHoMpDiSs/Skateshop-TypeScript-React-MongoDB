@@ -42,10 +42,12 @@ const Main: React.FC<Props> = (props) => {
       <div className="lg:mr-48 lg:ml-48">
         <VideoPlayer />
       </div>
-      <div className="flex justify-center mb-20">
+      <div className="flex justify-center ml-10 mr-10 mb-20 ">
         <Carousel/>
       </div>
       <About />
+      <div className="lg:mr-48 lg:ml-48">
+   
       <YouTube
       src={"https://www.youtube.com/watch?v=BKpNtXmIpR0"}
       />
@@ -56,7 +58,7 @@ const Main: React.FC<Props> = (props) => {
       <YouTube
       src={"https://youtu.be/OqstOhGpYPc?si=e4JiTTYqf94CjSfx"}
       />
-
+  </div>
       <Footer />
     </div>
   );

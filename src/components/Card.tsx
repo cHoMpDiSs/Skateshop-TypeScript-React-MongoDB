@@ -82,7 +82,7 @@ const Card: React.FC<Props> = (props) => {
 
 
 return(
-    <div className="my-1 px-1 w-full lg:my-4 lg:px-4 lg:w-1/3">
+    <div className="my-1 px-1 w-full lg:my-4 lg:px-4 lg:w-1/3 mt-20 mb-20 lg:mt-20 lg:mb-20">
         <div className="rounded-lg shadow-lg align-center">
             <img className="object-cover h-96 mx-auto" src={item.img} alt={item.name}></img>
             <p className="mb-2 pt-2 text-center tracking-tight dark:text-black">{item.name}</p>
