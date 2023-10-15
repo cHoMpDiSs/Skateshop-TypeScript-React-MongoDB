@@ -4,7 +4,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 const Footer: React.FC = () => {
     return (
-        <footer className="">
+        <footer className="mt-64">
             <div className="bg-black h-24 m-0 ">
             <h2 className="text-white pt-4 text-center">Created By Jordon Marchesano</h2>
             <div className="text-center">
