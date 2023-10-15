@@ -4,6 +4,7 @@ import VideoPlayer from "../components/VideoPlayer";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 import About from "../components/About";
+import YouTube from "../components/YouTube";
 
 
 interface Item {
@@ -45,6 +46,17 @@ const Main: React.FC<Props> = (props) => {
         <Carousel/>
       </div>
       <About />
+      <YouTube
+      src={"https://www.youtube.com/watch?v=BKpNtXmIpR0"}
+      />
+       <YouTube
+      src={"https://youtu.be/EbLRuiBVX9E?si=OT2Kc2xoZoX7Y-rQ"}
+      />
+
+      <YouTube
+      src={"https://youtu.be/OqstOhGpYPc?si=e4JiTTYqf94CjSfx"}
+      />
+
       <Footer />
     </div>
   );

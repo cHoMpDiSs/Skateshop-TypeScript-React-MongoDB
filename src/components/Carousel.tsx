@@ -2,25 +2,22 @@ import React, { Component } from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import Swipe from "react-easy-swipe";
 
-
-
-
-
-interface CarouselProps {
-  images: string[];
-}
-
 interface CarouselState {
   currentSlide: number;
   paused: boolean;
 }
 
-const images: string[] = ["https://susaf.s3.us-west-1.amazonaws.com/static/skateboards/black_deck.jpeg",
-"https://susaf.s3.us-west-1.amazonaws.com/static/pants/baggy_black.jpg",
-"https://susaf.s3.us-west-1.amazonaws.com/static/shirts/green_shirt.JPG"
-]
+const images: string[] = [
+  "https://susaf.s3.us-west-1.amazonaws.com/static/pants/polar-notes.jpg",
+  "https://susaf.s3.us-west-1.amazonaws.com/static/skateboards/baker.jpg",
+  "https://susaf.s3.us-west-1.amazonaws.com/static/shirts/carpet-dino.jpg",
+  "https://susaf.s3.us-west-1.amazonaws.com/static/pants/former-crux.jpg",
+  "https://susaf.s3.us-west-1.amazonaws.com/static/skateboards/frog-1.jpg",
+  "https://susaf.s3.us-west-1.amazonaws.com/static/shirts/carpet-classic.jpg",
+  "https://susaf.s3.us-west-1.amazonaws.com/static/skateboards/quasi-puzzle.jpg",
+];
 
-class Carousel extends Component<{},CarouselState> {
+class Carousel extends Component<{}, CarouselState> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -33,7 +30,7 @@ class Carousel extends Component<{},CarouselState> {
     setInterval(() => {
       if (this.state.paused === false) {
         let newSlide =
-          this.state.currentSlide === 2
+          this.state.currentSlide === images.length - 1
             ? 0
             : this.state.currentSlide + 1;
         this.setState({ currentSlide: newSlide });
@@ -43,7 +40,7 @@ class Carousel extends Component<{},CarouselState> {
 
   nextSlide = () => {
     let newSlide =
-      this.state.currentSlide === 2
+      this.state.currentSlide === images.length - 1
         ? 0
         : this.state.currentSlide + 1;
     this.setState({ currentSlide: newSlide });
@@ -52,7 +49,7 @@ class Carousel extends Component<{},CarouselState> {
   prevSlide = () => {
     let newSlide =
       this.state.currentSlide === 0
-        ? 2
+        ? images.length - 1
         : this.state.currentSlide - 1;
     this.setState({ currentSlide: newSlide });
   };
@@ -63,24 +60,22 @@ class Carousel extends Component<{},CarouselState> {
 
   render() {
     return (
-      <div className="mt-28 h-auto pt- mb- ">       
-
-      <div className="max-w-lg h-96 w-96  flex overflow-hidden relative justify-center ">
-      <AiOutlineLeft
+      <div className="mt-28 h-auto pt-mb-">
+        <div className="max-w-lg h-100% w-100% flex overflow-hidden relative justify-center">
+          <AiOutlineLeft
             onClick={this.prevSlide}
             className="absolute left-0 text-3xl inset-y-1/2 text-black cursor-pointer"
-          /> 
+          />
           <Swipe onSwipeLeft={this.nextSlide} onSwipeRight={this.prevSlide}>
             {images.map((slide, index) => {
               return (
-                
                 <img
                   src={slide}
                   alt="This is a carousel slide"
                   key={index}
                   className={
                     index === this.state.currentSlide
-                      ? "block  w-full h-full object-fit "
+                      ? "block w-100% h-auto"
                       : "hidden"
                   }
                   onMouseEnter={() => {
@@ -93,7 +88,6 @@ class Carousel extends Component<{},CarouselState> {
               );
             })}
           </Swipe>
-
           <div className="absolute w-full flex justify-center bottom-0">
             {images.map((element, index) => {
               return (
@@ -111,7 +105,6 @@ class Carousel extends Component<{},CarouselState> {
               );
             })}
           </div>
-
           <AiOutlineRight
             onClick={this.nextSlide}
             className="absolute right-0 text-3xl inset-y-1/2 text-black cursor-pointer"
