@@ -46,19 +46,29 @@ const Main: React.FC<Props> = (props) => {
         <Carousel/>
       </div>
       <About />
-      <div className="lg:mr-48 lg:ml-48">
+      <div className="container mx-auto  px-10 pb-32 text-center lg:mx-auto lg:px-60">
    
       <YouTube
       src={"https://www.youtube.com/watch?v=BKpNtXmIpR0"}
       />
+      <p className="vid-text">Local skater and filmer Sean Grohs and his latest video.</p>
+
+      </div>
+      <div className="container mx-auto  px-10 pb-32 text-center lg:mx-auto lg:px-60">
        <YouTube
       src={"https://youtu.be/EbLRuiBVX9E?si=OT2Kc2xoZoX7Y-rQ"}
       />
+         <p className="vid-text">Baker 3 a 2005 masterpiece.</p>
+      </div>
 
+    <div className=" container mx-auto  px-10 pb-32 text-center lg:mx-auto lg:px-60">
+   
       <YouTube
       src={"https://youtu.be/OqstOhGpYPc?si=e4JiTTYqf94CjSfx"}
       />
+      <p className="vid-text">One of the most epic early 2000's skate videos. Mainly filmed in Europe. A timeless classic</p>
   </div>
+
       <Footer />
     </div>
   );
