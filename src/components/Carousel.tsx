@@ -8,10 +8,10 @@ interface CarouselState {
 }
 
 const images: string[] = [
-  "https://susaf.s3.us-west-1.amazonaws.com/static/pants/polar-notes.jpg",
+  "https://susaf.s3.us-west-1.amazonaws.com/static/pants/bb-black-mint.jpg",
   "https://susaf.s3.us-west-1.amazonaws.com/static/skateboards/baker.jpg",
   "https://susaf.s3.us-west-1.amazonaws.com/static/shirts/carpet-dino.jpg",
-  "https://susaf.s3.us-west-1.amazonaws.com/static/pants/former-crux.jpg",
+  "https://susaf.s3.us-west-1.amazonaws.com/static/pants/bb-blue.jpg",
   "https://susaf.s3.us-west-1.amazonaws.com/static/skateboards/frog-1.jpg",
   "https://susaf.s3.us-west-1.amazonaws.com/static/shirts/carpet-classic.jpg",
   "https://susaf.s3.us-west-1.amazonaws.com/static/skateboards/quasi-puzzle.jpg",
