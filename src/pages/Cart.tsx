@@ -61,7 +61,7 @@ const Cart: React.FC<Props> = (props) =>{
    <Header/>
    <h2 className="mb-4 mt-10 text-4xl font-extrabold text-center ">Your Cart</h2>
         <div className="container my-12 mx-auto px-4 md:px-12 ">
-                <div className="flex justify-center flex-wrap -mx-1 lg:-mx- ">
+                <div className="flex flex-wrap -mx-1 lg:-mx- ">
 
                 
             {cartItems.length === 0 && <div>Cart is empty</div>}

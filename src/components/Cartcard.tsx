@@ -32,7 +32,7 @@ interface Props {
 const Cartcard: React.FC<Props> = (props) => {
     const {product, onAdd, onRemove, img } = props;
     return(
-        <div className="my-1 px-1 w-full lg:my-4 lg:px-4 lg:w-1/3 ">
+        <div className="my-1 px-1 w-full lg:my-4 lg:px-4 lg:w-1/3 mt-20 mb-20 lg:mt-20 lg:mb-20">
         <div className="rounded-lg shadow-lg ">
             <img className="object-cover h-96 mx-auto" src={img} alt={product.item.name}></img>
             <div className="text-center pb-3 ">
