@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Card from "../components/Card";
+import Footer from "../components/Footer";
 
 
 interface Item {
@@ -64,6 +65,7 @@ const Pants: React.FC<Props> = (props) =>{
                 )}
             </div>
             </div>
+            <Footer/>
         </div>
     )
  }

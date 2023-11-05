@@ -26,26 +26,26 @@ const Header: React.FC = () =>{
                 <div
                   className={
                     "lg:flex flex-grow items-center " +
-                    (navbarOpen ? " flex justify-end " : " hidden")
+                    (navbarOpen ? " flex " : " hidden")
                   }
                   id="example-navbar-danger"
                 >
                   <ul className="flex flex-col lg:flex-row list-none lg:ml-auto ">
                     <li className="nav-item">
-                      <Link className="px-3 py-2 justify-end flex items-center  font-bold leading-snug text-white hover:opacity-75" to="/skateboards"><p className="nav-text">skateboards</p></Link>
+                      <Link className={"px- py-2 flex items-center  font-bold leading-snug text-white hover:opacity-75 " + (navbarOpen? " ": "px-2")} to="/skateboards"><p className="nav-text">skateboards</p></Link>
                                    
                     </li>
                     <li className="nav-item ">
-                     <Link className="px-3 py-2 flex justify-end items-center font-bold leading-snug text-white hover:opacity-75" to="/shirts"><p className="nav-text">shirts</p></Link>
+                     <Link className={"px- py-2 flex items-center  font-bold leading-snug text-white hover:opacity-75 " + (navbarOpen? " ": "px-2")}  to="/shirts"><p className="nav-text">shirts</p></Link>
             
                     </li>
                     <li className="nav-item">
-                     <Link className="px-3 py-2 flex justify-end items-center  font-bold leading-snug text-white hover:opacity-75" to="/pants"><p className="nav-text">pants</p></Link>
+                     <Link className={"px- py-2 flex items-center  font-bold leading-snug text-white hover:opacity-75 " + (navbarOpen? " ": "px-2")}  to="/pants"><p className="nav-text">pants</p></Link>
                   
                     </li>
                 
                     <li className="nav-item">
-                      <Link className="px-3 py-2 flex justify-end items-center  font-bold leading-snug text-white hover:opacity-75" to="/cart"> 
+                      <Link className={"px- py-2 flex items-center  font-bold leading-snug text-white hover:opacity-75 " + (navbarOpen? " ": "px-2")} to="/cart"> 
                       <FontAwesomeIcon icon={faCartShopping}/>
                       </Link>
                     </li>

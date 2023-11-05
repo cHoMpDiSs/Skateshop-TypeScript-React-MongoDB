@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Card from "../components/Card";
+import Footer from "../components/Footer";
 
 
 interface Item {
@@ -66,6 +67,7 @@ return(
             )}
             </div>
         </div>
+        <Footer/>
     </div>
 )
 }
