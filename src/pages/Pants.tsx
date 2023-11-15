@@ -34,7 +34,8 @@ interface Props {
 const Pants: React.FC<Props> = (props) =>{
     const [pant, setPant] = useState<Item[]>([]);
     const {onAdd, cartItems} = props;
-
+    const arePantsRendered = pant.length > 0;
+    
 
     useEffect(() =>{
     pants()
@@ -65,7 +66,7 @@ const Pants: React.FC<Props> = (props) =>{
                 )}
             </div>
             </div>
-            <Footer/>
+            {arePantsRendered && <Footer />}
         </div>
     )
  }

@@ -35,6 +35,7 @@ interface Props {
 const Shirts: React.FC<Props> = (props) =>{
     const [shirt, setShirt] = useState<Item[]>([]);
     const {onAdd, cartItems} = props;
+    const areShirtsRendered = shirt.length > 0;
     useEffect(()=>{
     shirts()
     },[])
@@ -67,7 +68,7 @@ return(
             )}
             </div>
         </div>
-        <Footer/>
+        {areShirtsRendered && <Footer />}
     </div>
 )
 }

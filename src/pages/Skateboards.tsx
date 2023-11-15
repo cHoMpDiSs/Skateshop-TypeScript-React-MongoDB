@@ -32,6 +32,7 @@ interface Props {
 const Skateboards: React.FC<Props> = (props) => {
   const [skateboard, setSkateboard] = useState<Item[]>([]);
   const { onAdd, cartItems } = props;
+  const areSkateboardsRendered = skateboard.length > 0;
 
   useEffect(() => {
     skateboards();
@@ -60,7 +61,7 @@ const Skateboards: React.FC<Props> = (props) => {
           })}
         </div>
       </div>
-      <Footer/>
+      {areSkateboardsRendered && <Footer />}
     </div>
   );
 };
