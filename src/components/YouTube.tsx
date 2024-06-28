@@ -7,7 +7,7 @@ interface YouTubeProps {
 
 const YouTube: React.FC<YouTubeProps> = ({ src }) => {
   return (
-    <div className='player-wrapper aspect-video mt-20 text-center h-90 flex items-center justify-center'>
+    <div className='player-wrapper aspect-video md:mt-20 text-center h-90 flex items-center justify-center'>
        
       <YouTubePlayer 
       url={src} 

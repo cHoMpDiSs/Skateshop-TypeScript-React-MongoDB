@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
+import Header from '../components/NavBar';
 import Card from  '../components/Card'
 import Footer from '../components/Footer';
 
