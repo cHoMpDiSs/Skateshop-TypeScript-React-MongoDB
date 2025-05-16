@@ -3,60 +3,92 @@ import {Link} from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
-const Header: React.FC = () =>{
-      
-        const [navbarOpen, setNavbarOpen] = React.useState(false);
-        return (
-          <>
-            <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-black mb-3">
-              <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-                <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-                    <Link className="font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap text-white  font-bold hover:opacity-75" to="/"><p className="nav-text">sus af skateboards</p></Link>
-                  <button
-                    className="text-white cursor-pointer text-xl leading-none px-1 py-.5 border border-solid border-transparent rounded bg-transparent bg-black block lg:hidden outline-none focus:outline-none"
-                    type="button"
-                    onClick={() => setNavbarOpen(!navbarOpen)}
-                  >                 <div className="space-y-2 ">
-                  <div className="w-6 h-0.5 bg-white "></div>
-                  <div className="w-6 h-0.5 bg-white"></div>
-                  <div className="w-6 h-0.5 bg-white"></div>
-                </div>
-                  </button>
-                </div>
-                <div
-                  className={
-                    "lg:flex flex-grow items-center " +
-                    (navbarOpen ? " flex " : " hidden")
-                  }
-                  id="example-navbar-danger"
-                >
-                  <ul className="flex flex-col lg:flex-row list-none lg:ml-auto ">
-                    <li className="nav-item">
-                      <Link className={"px- py-2 flex items-center  font-bold leading-snug text-white hover:opacity-75 " + (navbarOpen? " ": "px-2")} to="/skateboards"><p className="nav-text">skateboards</p></Link>
-                                   
-                    </li>
-                    <li className="nav-item ">
-                     <Link className={"px- py-2 flex items-center  font-bold leading-snug text-white hover:opacity-75 " + (navbarOpen? " ": "px-2")}  to="/shirts"><p className="nav-text">shirts</p></Link>
-            
-                    </li>
-                    <li className="nav-item">
-                     <Link className={"px- py-2 flex items-center  font-bold leading-snug text-white hover:opacity-75 " + (navbarOpen? " ": "px-2")}  to="/pants"><p className="nav-text">pants</p></Link>
-                  
-                    </li>
-                
-                    <li className="nav-item">
-                      <Link className={"px- py-2 flex items-center  font-bold leading-snug text-white hover:opacity-75 " + (navbarOpen? " ": "px-2")} to="/cart"> 
-                      <FontAwesomeIcon icon={faCartShopping}/>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
-          </>
-        );
-      }
-        
+const Header: React.FC = () => {
+  const [navbarOpen, setNavbarOpen] = React.useState(false);
+  
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <Link 
+              to="/" 
+              className="flex items-center"
+            >
+              <span className="text-white text-xl font-extrabold tracking-wider hover:text-gray-300 transition duration-300">
+                SUS AF SKATEBOARDS
+              </span>
+            </Link>
+          </div>
 
+          {/* Mobile menu button */}
+          <div className="flex items-center lg:hidden">
+            <button
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-300 focus:outline-none"
+              onClick={() => setNavbarOpen(!navbarOpen)}
+            >
+              <div className="space-y-2">
+                <div className="w-6 h-0.5 bg-current transition duration-300 transform"></div>
+                <div className="w-6 h-0.5 bg-current transition duration-300 transform"></div>
+                <div className="w-6 h-0.5 bg-current transition duration-300 transform"></div>
+              </div>
+            </button>
+          </div>
+
+          {/* Desktop menu */}
+          <div className="hidden lg:flex lg:items-center lg:space-x-8">
+            <Link to="/skateboards" className="text-white font-medium hover:text-gray-300 transition duration-300">
+              SKATEBOARDS
+            </Link>
+            <Link to="/shirts" className="text-white font-medium hover:text-gray-300 transition duration-300">
+              SHIRTS
+            </Link>
+            <Link to="/pants" className="text-white font-medium hover:text-gray-300 transition duration-300">
+              PANTS
+            </Link>
+            <Link to="/cart" className="text-white hover:text-gray-300 transition duration-300">
+              <FontAwesomeIcon icon={faCartShopping} className="text-xl" />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      <div className={`lg:hidden ${navbarOpen ? "block" : "hidden"}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 bg-black">
+          <Link
+            to="/skateboards"
+            className="block px-3 py-2 text-white font-medium hover:bg-gray-900 rounded-md transition duration-300"
+            onClick={() => setNavbarOpen(false)}
+          >
+            SKATEBOARDS
+          </Link>
+          <Link
+            to="/shirts"
+            className="block px-3 py-2 text-white font-medium hover:bg-gray-900 rounded-md transition duration-300"
+            onClick={() => setNavbarOpen(false)}
+          >
+            SHIRTS
+          </Link>
+          <Link
+            to="/pants"
+            className="block px-3 py-2 text-white font-medium hover:bg-gray-900 rounded-md transition duration-300"
+            onClick={() => setNavbarOpen(false)}
+          >
+            PANTS
+          </Link>
+          <Link
+            to="/cart"
+            className="block px-3 py-2 text-white font-medium hover:bg-gray-900 rounded-md transition duration-300"
+            onClick={() => setNavbarOpen(false)}
+          >
+            <FontAwesomeIcon icon={faCartShopping} className="mr-2" />
+            CART
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+}
 
 export default Header;
