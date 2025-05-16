@@ -3,9 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/NavBar";
 import Cartcard from "../components/Cartcard";
 
-
 interface Item {
-    
     _id: string;
     product: string;
     name: string;
@@ -23,85 +21,108 @@ interface CartItem {
     item: Item;
     size: string;
     quantity: number;
-   
-  }
+}
 
-interface Props  {
+interface Props {
     onAdd: (item:Item, size: string) => void;
     onRemove: (item:Item, size:string) => void;
     checkOut: () => void;
     cartItems: CartItem[];
-  
 }
 
-
-
-const Cart: React.FC<Props> = (props) =>{
+const Cart: React.FC<Props> = (props) => {
     const {cartItems, onAdd, onRemove, checkOut} = props;
     const navigate = useNavigate();
+    
     const navigateToThankYou = () => {
         navigate('/order');
     };
-    console.log("CART ITEMS IN CART", cartItems)
-    
-    let total = 0
-    let tax = 0;
-    let finalTotal = 0
 
-    const calculateTotal = () =>{
-        for(let i = 0; i < cartItems.length; i++){
-            total = cartItems[i].quantity * cartItems[i].item.price + total
-            tax = total * .075
-            finalTotal = total + tax
-        } 
-    }
-    calculateTotal()
-    return(
-    <div>
-   <Header/>
-   <h2 className="mb-4 mt-10 text-4xl font-extrabold text-center ">Your Cart</h2>
-        <div className="container my-12 mx-auto px-4 md:px-12 ">
-                <div className="flex flex-wrap -mx-1 lg:-mx- ">
+    const calculateTotals = () => {
+        const subtotal = cartItems.reduce((total, item) => total + (item.quantity * item.item.price), 0);
+        const tax = subtotal * 0.075;
+        const finalTotal = subtotal + tax;
+        return { subtotal, tax, finalTotal };
+    };
 
-                
-            {cartItems.length === 0 && <div>Cart is empty</div>}
-            {cartItems.map((item) => {
-                return(
-                <Cartcard
-                key={item.size + item.item._id }
-                product={item}
-                img={item.item.img}
-                onAdd={onAdd}
-                onRemove={onRemove}
-                />
-                )}
-           
-        )}
-         </div>
-            </div>
-        <div className="ml-auto px-20 pb-20 flex justify-end ">
-            <div className="relative">   
-            </div>
-            {total !== 0 &&  <div>    
-                <div className="text-right">
-                <p> ${total.toFixed(2)} </p>
-                <p>Tax ${tax.toFixed(2)}</p>
-                <p>Total:${finalTotal.toFixed(2)}</p>
+    const { subtotal, tax, finalTotal } = calculateTotals();
+
+    return (
+        <div className="min-h-screen bg-gray-50">
+            <Header/>
+            <div className="pt-16 pb-8 bg-black text-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 className="text-4xl font-extrabold text-center tracking-tight">
+                        Your Cart
+                    </h2>
+                    <p className="mt-4 max-w-2xl mx-auto text-center text-gray-300">
+                        {cartItems.length === 0 ? "Your cart is empty" : `${cartItems.length} item${cartItems.length > 1 ? 's' : ''} in your cart`}
+                    </p>
                 </div>
-        {cartItems.length !== 0 && <button className="mr-auto bg-transparent hover:bg-black-400 text-black-700  font-semibold
-                        py-.75 px-2 border border-black hover:border-transparent rounded "
-                      onClick={()=>{checkOut();navigateToThankYou()}}>Check Out</button>}
-                      
-                    </div>
-                      }
             </div>
-       
-    </div>
-)};
 
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                {cartItems.length === 0 ? (
+                    <div className="text-center py-12">
+                        <p className="text-xl text-gray-600">Your cart is empty</p>
+                        <button 
+                            onClick={() => navigate('/')}
+                            className="mt-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition duration-300"
+                        >
+                            Continue Shopping
+                        </button>
+                    </div>
+                ) : (
+                    <div className="lg:grid lg:grid-cols-12 lg:gap-8">
+                        <div className="lg:col-span-8">
+                            <div className="space-y-8">
+                                {cartItems.map((item) => (
+                                    <Cartcard
+                                        key={item.size + item.item._id}
+                                        product={item}
+                                        img={item.item.img}
+                                        onAdd={onAdd}
+                                        onRemove={onRemove}
+                                    />
+                                ))}
+                            </div>
+                        </div>
 
-
-
+                        <div className="lg:col-span-4 mt-8 lg:mt-0">
+                            <div className="bg-white rounded-lg shadow-sm p-6">
+                                <h3 className="text-lg font-medium text-gray-900 mb-4">Order Summary</h3>
+                                <div className="flow-root">
+                                    <dl className="text-sm">
+                                        <div className="py-2 flex items-center justify-between">
+                                            <dt className="text-gray-600">Subtotal</dt>
+                                            <dd className="font-medium text-gray-900">${subtotal.toFixed(2)}</dd>
+                                        </div>
+                                        <div className="py-2 flex items-center justify-between border-t border-gray-200">
+                                            <dt className="text-gray-600">Tax</dt>
+                                            <dd className="font-medium text-gray-900">${tax.toFixed(2)}</dd>
+                                        </div>
+                                        <div className="py-2 flex items-center justify-between border-t border-gray-200">
+                                            <dt className="text-base font-medium text-gray-900">Total</dt>
+                                            <dd className="text-base font-medium text-gray-900">${finalTotal.toFixed(2)}</dd>
+                                        </div>
+                                    </dl>
+                                    <div className="mt-6">
+                                        <button
+                                            onClick={() => {checkOut(); navigateToThankYou();}}
+                                            className="w-full bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 transition duration-300 font-medium"
+                                        >
+                                            Checkout
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
 
 export default Cart;
 
